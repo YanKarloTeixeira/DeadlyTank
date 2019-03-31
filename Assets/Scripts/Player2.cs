@@ -37,7 +37,7 @@ public class Player2 : MonoBehaviour
     // User for initialization.
     void Start()
     {
-        rBody = GameObject.FindGameObjectWithTag("Tank02").GetComponent<Rigidbody2D>();
+        rBody = GameObject.FindGameObjectWithTag("Player2").GetComponent<Rigidbody2D>();
         GoTo = new KeyController(2);
     }
 

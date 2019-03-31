@@ -19,6 +19,7 @@ public class Player1 : MonoBehaviour
     //PUBLIC VARIABLES
     public float speed = 1f;
     public float jumpForce = 500;
+    public int Fuel = 100000;
     public bool Moving_UP = false;
     public bool Moving_Down = false;
     public bool Moving_Left = false;
@@ -37,7 +38,7 @@ public class Player1 : MonoBehaviour
     // User for initialization.
     void Start()
     {
-        rBody = GameObject.FindGameObjectWithTag("Tank01").GetComponent<Rigidbody2D>();
+        rBody = GameObject.FindGameObjectWithTag("Player1").GetComponent<Rigidbody2D>();
         GoTo = new KeyController(1);
     }
     
@@ -131,6 +132,7 @@ public class Player1 : MonoBehaviour
     {
         trackLeft.animator.SetBool("isMoving", true);
         trackRight.animator.SetBool("isMoving", true);
+        if(--Fuel<0)  speed = speed / 10;
     }
 
     void trackStop()
