@@ -18,10 +18,10 @@ public class FireCannon : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        temp = new Vector3(0.0f, bulletSpawn.position.y+0.1f, 0.0f); 
+         
         if(Input.GetKeyDown(KeyCode.Space))
         {
-            GameObject gObj = Instantiate(bullet, bulletSpawn.position+temp, bulletSpawn.rotation);
+            GameObject gObj = Instantiate(bullet, bulletSpawn.position, bulletSpawn.rotation);
             gObj.GetComponent<Rigidbody2D>().velocity = bulletSpawn.up * 10.0f;
         }
     }
