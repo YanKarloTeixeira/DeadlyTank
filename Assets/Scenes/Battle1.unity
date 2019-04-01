@@ -200,7 +200,7 @@ GameObject:
   - component: {fileID: 45423936}
   m_Layer: 0
   m_Name: Track_Right
-  m_TagString: Untagged
+  m_TagString: Player2
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -310,7 +310,7 @@ GameObject:
   - component: {fileID: 60777750}
   m_Layer: 0
   m_Name: Cannon
-  m_TagString: Untagged
+  m_TagString: Player1
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -341,7 +341,7 @@ GameObject:
   - component: {fileID: 71170852}
   m_Layer: 0
   m_Name: Shadow
-  m_TagString: Untagged
+  m_TagString: Player1
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -420,7 +420,7 @@ GameObject:
   - component: {fileID: 125081532}
   m_Layer: 0
   m_Name: HeavyHullA
-  m_TagString: Untagged
+  m_TagString: Player1
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -612,7 +612,7 @@ GameObject:
   - component: {fileID: 174154256}
   m_Layer: 0
   m_Name: BulletSpawn
-  m_TagString: Untagged
+  m_TagString: Player1
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -837,7 +837,7 @@ GameObject:
   - component: {fileID: 451317544}
   m_Layer: 0
   m_Name: Cannon_P1
-  m_TagString: Untagged
+  m_TagString: Player1
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -913,7 +913,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 451317541}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d464867a699433244b00b54e518f9161, type: 3}
   m_Name: 
@@ -1051,7 +1051,7 @@ GameObject:
   - component: {fileID: 625492012}
   m_Layer: 0
   m_Name: Track_Right
-  m_TagString: Untagged
+  m_TagString: Player1
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1241,7 +1241,7 @@ GameObject:
   - component: {fileID: 833291294}
   m_Layer: 0
   m_Name: HeavyHullB
-  m_TagString: Untagged
+  m_TagString: Player2
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1308,6 +1308,36 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &1049035128
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1049035129}
+  m_Layer: 0
+  m_Name: BulletSpawn
+  m_TagString: Player2
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1049035129
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1049035128}
+  m_LocalRotation: {x: 0, y: -1, z: 0, w: 0}
+  m_LocalPosition: {x: 0.057472706, y: 0.8, z: 0.23240025}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2127517175}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 180, y: 0, z: 180}
 --- !u!1 &1054829204
 GameObject:
   m_ObjectHideFlags: 0
@@ -1559,6 +1589,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd594889fe05b9140b642477c88962f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  trackLeft: {fileID: 2033031327}
+  trackRight: {fileID: 625492012}
+  playerTag: 
   speed: 1
   jumpForce: 500
   Fuel: 100000
@@ -1566,8 +1599,13 @@ MonoBehaviour:
   Moving_Down: 0
   Moving_Left: 0
   Moving_Right: 0
-  trackLeft: {fileID: 2033031327}
-  trackRight: {fileID: 625492012}
+  horiz: 0
+  vert: 0
+  bullet: {fileID: 461724916265148186, guid: 06f9f26e424612545b5a636507ce3f32, type: 3}
+  bulletSpawn: {fileID: 174154256}
+  temp: {x: 0, y: 0, z: 0}
+  position: {x: 0, y: 0, z: 0}
+  rotation: {x: 0, y: 0, z: 0, w: 0}
 --- !u!50 &1154517246
 Rigidbody2D:
   serializedVersion: 4
@@ -1815,7 +1853,7 @@ GameObject:
   - component: {fileID: 1468940682}
   m_Layer: 0
   m_Name: Track_Left
-  m_TagString: Untagged
+  m_TagString: Player2
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2038,14 +2076,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20e76476e2d3bac41a092700b97b8be5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  trackLeft: {fileID: 1468940682}
+  trackRight: {fileID: 45423936}
+  playerTag: 
   speed: 1
   jumpForce: 500
+  Fuel: 100000
   Moving_UP: 0
   Moving_Down: 0
   Moving_Left: 0
   Moving_Right: 0
-  trackLeft: {fileID: 1468940682}
-  trackRight: {fileID: 45423936}
+  horiz: 0
+  vert: 0
+  bullet: {fileID: 461724916265148186, guid: 06f9f26e424612545b5a636507ce3f32, type: 3}
+  bulletSpawn: {fileID: 1049035129}
+  temp: {x: 0, y: 0, z: 0}
+  position: {x: 0, y: 0, z: 0}
+  rotation: {x: 0, y: 0, z: 0, w: 0}
 --- !u!50 &1744418217
 Rigidbody2D:
   serializedVersion: 4
@@ -2343,7 +2390,7 @@ GameObject:
   - component: {fileID: 2033031327}
   m_Layer: 0
   m_Name: Track_Left
-  m_TagString: Untagged
+  m_TagString: Player1
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2454,7 +2501,7 @@ GameObject:
   - component: {fileID: 2127517176}
   m_Layer: 0
   m_Name: Cannon_P2
-  m_TagString: Untagged
+  m_TagString: Player2
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2469,7 +2516,8 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -0.027316034, y: 0.9, z: -0.23240025}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 1049035129}
   m_Father: {fileID: 1744418214}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

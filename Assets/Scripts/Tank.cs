@@ -9,64 +9,68 @@ namespace Assets.Scripts.Objects
 {
     public class Tank
     {
-        private double x;
-        private double y;
 
-        private double Direction; // rotation on the screen
-
+        private double Damage; // From 0 to 150
+        private double TotalDamageAllowed;
         private float Speed;
-        private float OriginalSpeed; 
-        private float NoFuelSpeed;
-
+        private float InitialSpeed; 
         private double FuelQty;// Amount of Initial Fuel
         private double FuelConsumption = 0.001; // Fuel Consumption Amount 
+        public string Flag;
 
 
-        public Tank(double Pos_x, double Pos_y)
+        public Tank(string Flag)
         {
-            if (Pos_y < 0) Direction = 180;
-            OriginalSpeed = 1;
-            Speed = OriginalSpeed;
-            NoFuelSpeed = Speed * 0.250f;
+            InitialSpeed = 3.0f;
+            Speed = InitialSpeed;
             FuelQty = 100; 
-            FuelConsumption = 0.001;
+            FuelConsumption = 0.01;
+            Damage = 0;
+            TotalDamageAllowed = 15;
+            this.Flag = Flag;
         }
 
-        public void move(string movement)
+        public void Move(string movement)
         {
-            switch (movement)
-            {
-                case "up":
-                    y += Speed;
-                    Direction = 0;
-                    break;
-                case "down":
-                    y -= Speed;
-                    Direction = 180;
-                    break;
-                case "left":
-                    x -= Speed;
-                    Direction = 270;
-                    break;
-                case "right":
-                    x += Speed;
-                    Direction = 90;
-                    break;
-            }
-
+            ConsumeFuel();
         }
 
+        public void ConsumeFuel()
+        {
+            FuelQty -= FuelConsumption;
+        }
+
+        public float GetSpeed()
+        {
+            if (Damage / TotalDamageAllowed >= 0.8) Speed = InitialSpeed * 0.2f;
+            else if (Damage / TotalDamageAllowed >= 0.6) Speed = InitialSpeed * 0.4f;
+            else if (Damage / TotalDamageAllowed >= 0.4) Speed = InitialSpeed * 0.6f;
+            else if (Damage / TotalDamageAllowed >= 0.2) Speed = InitialSpeed * 0.8f;
+
+            if (FuelQty <= 0) Speed = InitialSpeed * 0.1f;
+            return Speed;
+        }
+
+        public void SetDamage()
+        {
+            Damage++;
+            Debug.Log("===============>" + this.Flag + " tank damage: " + Damage);
+            Debug.Log("===============>" + this.Flag + " tank damage calc: " + (Damage/TotalDamageAllowed));
+            Debug.Log("===============>" + this.Flag + " tank speed: " + GetSpeed());
+        }
+        public double GetDamageLevel()
+        {
+            return Damage / TotalDamageAllowed;
+        }
         public void setFuel(double PowerUp =0)
         {
-            FuelQty += PowerUp - FuelConsumption;
-            if (FuelQty < 0)
-            {
-                Speed = NoFuelSpeed;
-                FuelQty = 0;
-            }
+            FuelQty += (PowerUp - FuelConsumption);
         }
 
-
+        public double GetFuel()
+        {
+            return FuelQty;
+        }
     }
 }
 

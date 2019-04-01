@@ -22,7 +22,7 @@ public class FireCannon : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.Space))
         {
             GameObject gObj = Instantiate(bullet, bulletSpawn.position, bulletSpawn.rotation);
-            gObj.GetComponent<Rigidbody2D>().velocity = bulletSpawn.up * 10.0f;
+            gObj.GetComponent<Rigidbody2D>().velocity = bulletSpawn.up * 5.0f;
         }
     }
 }
