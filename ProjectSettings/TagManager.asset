@@ -12,6 +12,8 @@ TagManager:
   - Barrier
   - Player1
   - Player2
+  - Barrier2
+  - Barrier3
   layers:
   - Default
   - TransparentFX
