@@ -9,6 +9,11 @@ public class MainMenuController : MonoBehaviour
     {
         SceneManager.LoadScene("Battle1");
     }
+    public void TutorialGame()
+    {
+        SceneManager.LoadScene("Tutorial");
+    }
+
 
     // What happens when I click the quit button?
     public void QuitGame()
