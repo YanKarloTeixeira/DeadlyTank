@@ -19,18 +19,18 @@ public class Player1 : MonoBehaviour
     //PUBLIC VARIABLES
     public Track trackLeft;
     public Track trackRight;
+    public Tank Tank;
     public string playerTag;
     //public float speed = 1f;
     public float jumpForce = 500;
     public int Fuel = 100000;
-    public bool Moving_UP = false;
-    public bool Moving_Down = false;
-    public bool Moving_Left = false;
-    public bool Moving_Right = false;
+    //public bool Moving_UP = false;
+    //public bool Moving_Down = false;
+    //public bool Moving_Left = false;
+    //public bool Moving_Right = false;
 
     //Players
     public KeyController GoTo;
-    public Tank Tank;
     public float horiz=0.0f;
     public float vert =0.0f;
 
@@ -82,10 +82,10 @@ public class Player1 : MonoBehaviour
     {
         //speed = 1f;
 
-        Moving_UP = Input.GetKey(GoTo.Up);
-        Moving_Down = Input.GetKey(GoTo.Down);
-        Moving_Left = Input.GetKey(GoTo.Left);
-        Moving_Right = Input.GetKey(GoTo.Right);
+        //Moving_UP = Input.GetKey(GoTo.Up);
+        //Moving_Down = Input.GetKey(GoTo.Down);
+        //Moving_Left = Input.GetKey(GoTo.Left);
+        //Moving_Right = Input.GetKey(GoTo.Right);
 
 
         if(Input.GetKey(GoTo.Up) && Input.GetKey(GoTo.Left))
@@ -149,28 +149,17 @@ public class Player1 : MonoBehaviour
             gObj.GetComponent<Rigidbody2D>().velocity = bulletSpawn.up * 10.0f;
         }
 
+        setScoreBoard();
         
     }// End of FixedUpdate()
 
 
-    // This method is to be trigged by the bullet collision
-    void SetDamage()
-    {
-        Tank.SetDamage();
-    }
-
-
-
-    void trackStart()
+     void trackStart()
     {
         trackLeft.animator.SetBool("isMoving", true);
         trackRight.animator.SetBool("isMoving", true);
         Tank.ConsumeFuel();
-        GameControllerUpdate();
-        //Debug.Log(Tank.Flag + " fuel level is :" + gCont.Player1FuelLevel);
-
-        //if(--Fuel<0)  speed = speed / 10;
-    }
+     }
 
     void trackStop()
     {
@@ -178,8 +167,13 @@ public class Player1 : MonoBehaviour
         trackRight.animator.SetBool("isMoving", false);
     }
 
-    void GameControllerUpdate()
+    int GetTankPoints()
     {
-        gCont.Player1FuelLevel= Tank.GetFuel();
+        return Tank.getScoredPoints();
+    }
+
+    void setScoreBoard()
+    {
+        gCont.setScoreboard(Tank.Flag);
     }
 }

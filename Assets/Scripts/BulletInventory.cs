@@ -1,4 +1,17 @@
-﻿using System.Collections;
+﻿/*
+ ____                 _ _         _____           _    
+|  _ \  ___  __ _  __| | |_   _  |_   _|_ _ _ __ | | __
+| | | |/ _ \/ _` |/ _` | | | | |   | |/ _` | '_ \| |/ /
+| |_| |  __/ (_| | (_| | | |_| |   | | (_| | | | |   < 
+|____/ \___|\__,_|\__,_|_|\__, |   |_|\__,_|_| |_|_|\_\
+                          |___/                        
+                          By: Yan Karlo                
+                              Shila Das                
+                              Nikesh Patel             
+                                                       
+*/
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -23,39 +36,43 @@ public class BulletInventory : MonoBehaviour
         Debug.Log("Other tag: "+ other.tag);
         Debug.Log("Bullet trigger: " + this.trigger);
         if (other.tag == this.trigger) return;
-        switch (other.tag)
+        switch (other.tag.ToUpper())
         {
-            case "Barrier":
+            case "BARRIER":
                 Debug.Log(other.ToString());
                 Debug.Log("Barrier is gone");
                 Instantiate(brick2, other.transform.position, other.transform.rotation);
                 Destroy(other.gameObject);
                 Destroy(this.gameObject);
                 break;
-            case "Barrier2":
+            case "BARRIER2":
                 Debug.Log(other.ToString());
                 Debug.Log("Barrier2 is gone");
                 Instantiate(brick3, other.transform.position, other.transform.rotation);
                 Destroy(other.gameObject);
                 Destroy(this.gameObject);
                 break;
-            case "Barrier3":
+            case "BARRIER3":
                 Debug.Log(other.ToString());
                 Debug.Log("Barrier3 is gone");
                 Destroy(other.gameObject);
                 Destroy(this.gameObject);
                 break;
-            case "Player1":
-                gCont.SetPlayer2Points();
-                Debug.Log("Player 2 : " + gCont.Player2Points);
-                Destroy(this.gameObject);
+            case "PLAYER1":
+                //gCont.SetPlayer2Points();
+                //Debug.Log("Player 2 : " + gCont.Player2Points);
+                Tank02.ScorePoints();
                 Tank01.SetDamage();
-                break;
-            case "player2":
-                gCont.SetPlayer1Points();
-                Debug.Log("Player 1 : " + gCont.Player1Points);
+                gCont.setScoreboard(Tank02.Flag);
                 Destroy(this.gameObject);
+                break;
+            case "PLAYER2":
+                //gCont.SetPlayer1Points();
+                //Debug.Log("Player 1 : " + gCont.Player1Points);
+                Tank01.ScorePoints();
                 Tank02.SetDamage();
+                gCont.setScoreboard(Tank01.Flag);
+                Destroy(this.gameObject);
                 break;
         }
         //if (other.CompareTag("Barrier"))
