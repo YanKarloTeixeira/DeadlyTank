@@ -1536,8 +1536,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 11500000, guid: a61e2afec4ac39b489643a4b94f21f8b, type: 3}
-        m_MethodName: 
+      - m_Target: {fileID: 728547218}
+        m_MethodName: BackStartGame
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
