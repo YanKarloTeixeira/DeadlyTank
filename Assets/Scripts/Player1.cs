@@ -24,10 +24,6 @@ public class Player1 : MonoBehaviour
     //public float speed = 1f;
     public float jumpForce = 500;
     public int Fuel = 100000;
-    //public bool Moving_UP = false;
-    //public bool Moving_Down = false;
-    //public bool Moving_Left = false;
-    //public bool Moving_Right = false;
 
     //Players
     public KeyController GoTo;
@@ -69,25 +65,14 @@ public class Player1 : MonoBehaviour
         }
     }
     
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            //rBody.AddForce(new Vector2(0,jumpForce));
-            
-        }
-    }
 
     void FixedUpdate()
     {
-        //speed = 1f;
 
-        //Moving_UP = Input.GetKey(GoTo.Up);
-        //Moving_Down = Input.GetKey(GoTo.Down);
-        //Moving_Left = Input.GetKey(GoTo.Left);
-        //Moving_Right = Input.GetKey(GoTo.Right);
+        // Blocks movements after end of level
+        if (gCont.Player1Points[gCont.ActualLevel-1] >= 15 || gCont.Player2Points[gCont.ActualLevel-1] >= 15) return;
 
-
+        //Movements Mapping from keyboard
         if(Input.GetKey(GoTo.Up) && Input.GetKey(GoTo.Left))
         {
             rBody.rotation = 45;

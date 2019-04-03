@@ -14,6 +14,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class GameController : MonoBehaviour
@@ -55,6 +56,11 @@ public class GameController : MonoBehaviour
 
     void Start()
     {
+        Player1Points = new int[3];
+        Player2Points = new int[3];
+        int dummy = PlayerPrefs.GetInt("ActualLevel");
+        ActualLevel = PlayerPrefs.GetInt("ActualLevel");
+
         /******************************
          Initializing the Scoreboard
          ******************************/
@@ -114,6 +120,7 @@ public class GameController : MonoBehaviour
         Player2FuelLevel = player2.Tank.GetFuel();
         player1Damage = player1.Tank.GetDamageLevel();
         player2Damage = player2.Tank.GetDamageLevel();
+        if (Player1Points[ActualLevel-1] >= 15 || Player2Points[ActualLevel - 1] >= 15) LevelEnd();
     }
 
     // Update the level
@@ -150,8 +157,38 @@ public class GameController : MonoBehaviour
     }
     public void LevelEnd()
     {
+        ChangeLevel();
+        switch (ActualLevel)
+        {
+            case 2:
+                setPlayerPrefs();
+                SceneManager.LoadScene("Battle2");
+                break;
+            case 3:
+                setPlayerPrefs();
+                SceneManager.LoadScene("Battle3");
+                break;
+            default:
+                SceneManager.LoadScene("GameOver");
+                break;
+
+        }
+        player1.Tank.ResetLevel();
+        player2.Tank.ResetLevel();
+
         //ui_EndLevelPanel.SetActive(true);
         //ui_EndLevelPanel.GetComponentInChildren<UI_CherryCounter>().UpdateUI(itemCounter, totalItemCount);
     }
 
+    public void setPlayerPrefs()
+    {
+        //for(int i =0; i < 3; i++)
+        //{
+        //    PlayerPrefs.SetInt("Player1Points" + i, Player1Points[i]);
+        //    PlayerPrefs.SetInt("Player2Points" + i, Player2Points[i]);
+        //}
+
+        PlayerPrefs.SetInt("ActualLevel", ActualLevel);
+
+    }
 }

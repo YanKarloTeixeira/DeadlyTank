@@ -22,12 +22,18 @@ public class BulletInventory : MonoBehaviour
     private Assets.Scripts.Objects.Tank Tank01, Tank02;
     public GameObject brick2;
     public GameObject brick3;
+    public GameObject rock2;
+    public GameObject rock3;
+    public GameObject metal2;
+    public GameObject metal3;
+    public int GameLevel;
 
     void Start()
     {
         gCont = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameController>();
         Tank01 = GameObject.FindGameObjectWithTag("Player1").GetComponent<Player1>().Tank;
         Tank02 = GameObject.FindGameObjectWithTag("Player2").GetComponent<Player2>().Tank;
+        GameLevel = Tank01.GameLevel;
     }
 
     void OnTriggerEnter2D(Collider2D other)
@@ -39,50 +45,47 @@ public class BulletInventory : MonoBehaviour
         switch (other.tag.ToUpper())
         {
             case "BARRIER":
-                Debug.Log(other.ToString());
-                Debug.Log("Barrier is gone");
+
+                if (GameLevel==1)
                 Instantiate(brick2, other.transform.position, other.transform.rotation);
+                else if(GameLevel==2)
+                    Instantiate(rock2, other.transform.position, other.transform.rotation);
+                else
+                    Instantiate(metal2, other.transform.position, other.transform.rotation);
+
+
                 Destroy(other.gameObject);
                 Destroy(this.gameObject);
                 break;
             case "BARRIER2":
-                Debug.Log(other.ToString());
-                Debug.Log("Barrier2 is gone");
-                Instantiate(brick3, other.transform.position, other.transform.rotation);
+
+                if (GameLevel == 1)
+                    Instantiate(brick3, other.transform.position, other.transform.rotation);
+                else if (GameLevel == 2)
+                    Instantiate(rock3, other.transform.position, other.transform.rotation);
+                else
+                    Instantiate(metal3, other.transform.position, other.transform.rotation);
+
+
                 Destroy(other.gameObject);
                 Destroy(this.gameObject);
                 break;
             case "BARRIER3":
-                Debug.Log(other.ToString());
-                Debug.Log("Barrier3 is gone");
                 Destroy(other.gameObject);
                 Destroy(this.gameObject);
                 break;
             case "PLAYER1":
-                //gCont.SetPlayer2Points();
-                //Debug.Log("Player 2 : " + gCont.Player2Points);
                 Tank02.ScorePoints();
                 Tank01.SetDamage();
                 gCont.setScoreboard(Tank02.Flag);
                 Destroy(this.gameObject);
                 break;
             case "PLAYER2":
-                //gCont.SetPlayer1Points();
-                //Debug.Log("Player 1 : " + gCont.Player1Points);
                 Tank01.ScorePoints();
                 Tank02.SetDamage();
                 gCont.setScoreboard(Tank01.Flag);
                 Destroy(this.gameObject);
                 break;
         }
-        //if (other.CompareTag("Barrier"))
-        //{
-        //    Debug.Log("It is colliding");
-        //    // Pick up the item
-        //    // cherryCounter++;
-        //    //gCont.PickUpItem();
-        //    // Instantiate the item feedback object
-        //    //Instantiate(itemFeedbackPref, other.transform.position, other.transform.rotation);
-        //} 
     }
 }
