@@ -6,8 +6,8 @@ using UnityEngine.SceneManagement;
 public class BackMenuController : MonoBehaviour
 {
     // Start is called before the first frame update
-   public void BackStartGame()
+    public void BackStartGame()
     {
-        SceneManager.LoadScene("Start");
+        SceneManager.LoadScene("Battle1");
     }
 }

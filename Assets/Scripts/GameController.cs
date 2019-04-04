@@ -75,6 +75,18 @@ public class GameController : MonoBehaviour
         /*****************************************************************/
     }
 
+    void Update()
+    {
+        if(Input.GetKeyDown(KeyCode.P))
+        {
+            //set audo snapshot to pause or unpause snapshot
+            //pause the game
+            Time.timeScale = Time.timeScale == 0 ? 1 : 0;
+
+            
+        }
+    }
+
     // Updates the player1 scoreboard
     private void setScoreboard1()
     {
