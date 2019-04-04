@@ -7,6 +7,7 @@ public class MainMenuController : MonoBehaviour
 {
     public void StartGame()
     {
+        PlayerPrefs.SetInt("ActualLevel", 1);
         SceneManager.LoadScene("Battle1");
     }
     public void TutorialGame()

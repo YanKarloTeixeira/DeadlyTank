@@ -146,6 +146,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   trigger: 
-  itemFeedbackPref: {fileID: 0}
   brick2: {fileID: 2116340517175661611, guid: e7efcc8e53d46324d8c16a299fc2a2da, type: 3}
   brick3: {fileID: 4872588360325648091, guid: 0fe10931690a58d4a81aff58ae5c839b, type: 3}
+  rock2: {fileID: 6448513128510657193, guid: 94e775d421383a04099c6c6962023cba, type: 3}
+  rock3: {fileID: 5104990620766234575, guid: 926201c16ef9d284c9d6505265833094, type: 3}
+  metal2: {fileID: 4756589732960599887, guid: 636f4d3b08b94cb45aa054553e130fea, type: 3}
+  metal3: {fileID: 4528901574663076208, guid: d9fef0a45ecb5fc4c85ff5e61ccc0e34, type: 3}
+  GameLevel: 0

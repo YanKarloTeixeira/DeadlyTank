@@ -32,6 +32,7 @@ namespace Assets.Scripts.Objects
         public string Flag;
         public int Points;
         public int TotalPoints;
+        public int GameLevel;
 
         //private GameController gCont;
 
@@ -47,6 +48,7 @@ namespace Assets.Scripts.Objects
             this.Flag = Flag;
             Points = 0;
             TotalPoints = 0;
+            GameLevel = PlayerPrefs.GetInt("ActualLevel");
         }
 
         public void TankLevelReset()
@@ -112,6 +114,11 @@ namespace Assets.Scripts.Objects
         {
             Points += value;
             TotalPoints += value;
+        }
+        public void ResetLevel()
+        {
+            Points = 0;
+  
         }
         public int getScoredPoints(int value = 1)
         {
