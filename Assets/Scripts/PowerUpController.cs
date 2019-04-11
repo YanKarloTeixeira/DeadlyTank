@@ -59,10 +59,15 @@ public class PowerUpController : MonoBehaviour
 
     private void PowerUpCreation()
     {
-        for (int i = 0; i < GasQty; i++) Invoke("InstantiateGasPowerup", UnityEngine.Random.Range(1.0f, 10.0f));
-        for (int i = 0; i < SpeedQty; i++) Invoke("InstantiateSpeedPowerup", UnityEngine.Random.Range(1.0f, 10.0f));
-        for (int i = 0; i < RecoverQty; i++) Invoke("InstantiateRecoverPowerup", UnityEngine.Random.Range(1.0f, 10.0f));
-        for (int i = 0; i < LandMineQty; i++) Invoke("InstantiateLandMinePowerup", UnityEngine.Random.Range(1.0f, 10.0f));
+        for (int i = 0; i < 200; i++)
+        {
+            Instantiate(Gas, new Vector3(UnityEngine.Random.Range(-9.0f, 9.0f), UnityEngine.Random.Range(-3, 3)),Quaternion.identity);
+        }
+        
+        // for (int i = 0; i < GasQty; i++) Invoke("InstantiateGasPowerup", UnityEngine.Random.Range(1.0f, 10.0f));
+        //for (int i = 0; i < SpeedQty; i++) Invoke("InstantiateSpeedPowerup", UnityEngine.Random.Range(1.0f, 10.0f));
+        //for (int i = 0; i < RecoverQty; i++) Invoke("InstantiateRecoverPowerup", UnityEngine.Random.Range(1.0f, 10.0f));
+        //for (int i = 0; i < LandMineQty; i++) Invoke("InstantiateLandMinePowerup", UnityEngine.Random.Range(1.0f, 10.0f));
 
 
 
@@ -70,7 +75,7 @@ public class PowerUpController : MonoBehaviour
 
     private void InstantiateGasPowerUp()
     {
-        //Vector3 v3 = new Vector3(100f,100f);
-        //GameObject gGasObj = Instantiate(Gas,v3);
+        Vector3 v3 = new Vector3(0.01f,0.01f);
+        GameObject gGasObj = Instantiate(Gas, v3, Quaternion.identity);
     }
 }

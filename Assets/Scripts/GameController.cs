@@ -125,7 +125,6 @@ public class GameController : MonoBehaviour
      **************************************/
     public void UpdateHistorical()
     {
-        Debug.Log("=======================================================================================>" + ActualLevel);
         Player1Points[ActualLevel - 1] = player1.Tank.getScoredPoints();
         Player2Points[ActualLevel - 1] = player2.Tank.getScoredPoints();
         Player1FuelLevel = player1.Tank.GetFuel();
