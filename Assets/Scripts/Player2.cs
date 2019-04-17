@@ -17,6 +17,7 @@ using UnityEngine;
 public class Player2 : MonoBehaviour
 {
     //PUBLIC VARIABLES
+    private AudioSource audio;
     public Track trackLeft;
     public Track trackRight;
     public Tank Tank;
@@ -64,7 +65,7 @@ public class Player2 : MonoBehaviour
 
         rBody = GameObject.FindGameObjectWithTag(playerTag).GetComponent<Rigidbody2D>();
         gCont = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameController>();
-
+audio = GetComponent<AudioSource>();
 
         if (playerTag == "Player1")
         {
@@ -147,6 +148,7 @@ public class Player2 : MonoBehaviour
             GameObject gObj = Instantiate(bullet, bulletSpawn.position, bulletSpawn.rotation);
             gObj.GetComponent<BulletInventory>().trigger = playerTag;
             gObj.GetComponent<Rigidbody2D>().velocity = bulletSpawn.up * 10.0f;
+              audio.Play();
         }
 
         setScoreBoard();

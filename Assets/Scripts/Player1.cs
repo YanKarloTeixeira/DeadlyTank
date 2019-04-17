@@ -35,6 +35,7 @@ public class Player1 : MonoBehaviour
     //PRIVATE VARIABLES
     private Rigidbody2D rBody;
     private GameController gCont;
+    private AudioSource audio;
 
     // Bullet Variables
     public GameObject bullet;
@@ -55,6 +56,7 @@ public class Player1 : MonoBehaviour
     public int Repair;
     public float SpeedUP;
     public double FuelUp;
+    private AudioSource aud;
     // Reserved function. Run only once when the object is /// <summary>
     // User for initialization.
     void Start()
@@ -64,7 +66,7 @@ public class Player1 : MonoBehaviour
 
         rBody = GameObject.FindGameObjectWithTag(playerTag).GetComponent<Rigidbody2D>();
         gCont = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameController>();
-      
+        audio = GetComponent<AudioSource>();
         
         if (playerTag == "Player1")
         {
@@ -92,6 +94,7 @@ public class Player1 : MonoBehaviour
         {
             rBody.rotation = 45;
             rBody.velocity = new Vector2(horiz- Tank.GetSpeed(), vert + Tank.GetSpeed());
+           
             trackStart();
         }
         else if (Input.GetKey(GoTo.Up) && Input.GetKey(GoTo.Right))
@@ -116,6 +119,7 @@ public class Player1 : MonoBehaviour
         {
             rBody.rotation = 0;
             rBody.velocity = new Vector2(horiz, vert + Tank.GetSpeed());
+             
             trackStart();
         }
         else if (Input.GetKey(GoTo.Down))
@@ -140,6 +144,7 @@ public class Player1 : MonoBehaviour
         {
             rBody.velocity = new Vector2(horiz, vert);
             trackStop();
+            
         }
 
         if (Input.GetKeyDown(GoTo.Fire))
@@ -147,6 +152,7 @@ public class Player1 : MonoBehaviour
             GameObject gObj = Instantiate(bullet, bulletSpawn.position, bulletSpawn.rotation);
             gObj.GetComponent<BulletInventory>().trigger = playerTag;
             gObj.GetComponent<Rigidbody2D>().velocity = bulletSpawn.up * 10.0f;
+            audio.Play();
         }
 
         setScoreBoard();
@@ -158,11 +164,13 @@ public class Player1 : MonoBehaviour
     {
         //trackLeft.animator.SetBool("isMoving", true);
         //trackRight.animator.SetBool("isMoving", true);
+       
         Tank.setFuel();
      }
 
     void trackStop()
     {
+        //aud.Stop();
         //trackLeft.animator.SetBool("isMoving", false);
         //trackRight.animator.SetBool("isMoving", false);
     }
