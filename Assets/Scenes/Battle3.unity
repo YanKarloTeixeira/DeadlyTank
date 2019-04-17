@@ -54,7 +54,7 @@ LightmapSettings:
     m_EnableBakedLightmaps: 0
     m_EnableRealtimeLightmaps: 0
   m_LightmapEditorSettings:
-    serializedVersion: 10
+    serializedVersion: 12
     m_Resolution: 2
     m_BakeResolution: 40
     m_AtlasSize: 1024
@@ -62,6 +62,7 @@ LightmapSettings:
     m_AOMaxDistance: 1
     m_CompAOExponent: 1
     m_CompAOExponentDirect: 0
+    m_ExtractAmbientOcclusion: 0
     m_Padding: 2
     m_LightmapParameters: {fileID: 0}
     m_LightmapsBakeMode: 1
@@ -76,10 +77,16 @@ LightmapSettings:
     m_PVRDirectSampleCount: 32
     m_PVRSampleCount: 500
     m_PVRBounces: 2
+    m_PVREnvironmentSampleCount: 500
+    m_PVREnvironmentReferencePointCount: 2048
+    m_PVRFilteringMode: 2
+    m_PVRDenoiserTypeDirect: 0
+    m_PVRDenoiserTypeIndirect: 0
+    m_PVRDenoiserTypeAO: 0
     m_PVRFilterTypeDirect: 0
     m_PVRFilterTypeIndirect: 0
     m_PVRFilterTypeAO: 0
-    m_PVRFilteringMode: 2
+    m_PVREnvironmentMIS: 0
     m_PVRCulling: 1
     m_PVRFilteringGaussRadiusDirect: 1
     m_PVRFilteringGaussRadiusIndirect: 5
@@ -88,6 +95,7 @@ LightmapSettings:
     m_PVRFilteringAtrousPositionSigmaIndirect: 2
     m_PVRFilteringAtrousPositionSigmaAO: 1
     m_ShowResolutionOverlay: 1
+    m_ExportTrainingData: 0
   m_LightingDataAsset: {fileID: 0}
   m_UseShadowmask: 1
 --- !u!196 &4
@@ -5274,9 +5282,10 @@ Camera:
   m_ClearFlags: 2
   m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
   m_projectionMatrixMode: 1
+  m_GateFitMode: 2
+  m_FOVAxisMode: 0
   m_SensorSize: {x: 36, y: 24}
   m_LensShift: {x: 0, y: 0}
-  m_GateFitMode: 2
   m_FocalLength: 50
   m_NormalizedViewPortRect:
     serializedVersion: 2
@@ -5493,6 +5502,105 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
+--- !u!1001 &361868348
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 8840513626756709213, guid: 96e88f2492c7dc242b637c109ea58eae,
+        type: 3}
+      propertyPath: m_Name
+      value: PowerUpController
+      objectReference: {fileID: 0}
+    - target: {fileID: 7676312498028782827, guid: 96e88f2492c7dc242b637c109ea58eae,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.35739273
+      objectReference: {fileID: 0}
+    - target: {fileID: 7676312498028782827, guid: 96e88f2492c7dc242b637c109ea58eae,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -1.1285338
+      objectReference: {fileID: 0}
+    - target: {fileID: 7676312498028782827, guid: 96e88f2492c7dc242b637c109ea58eae,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.34290567
+      objectReference: {fileID: 0}
+    - target: {fileID: 7676312498028782827, guid: 96e88f2492c7dc242b637c109ea58eae,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7676312498028782827, guid: 96e88f2492c7dc242b637c109ea58eae,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7676312498028782827, guid: 96e88f2492c7dc242b637c109ea58eae,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7676312498028782827, guid: 96e88f2492c7dc242b637c109ea58eae,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7676312498028782827, guid: 96e88f2492c7dc242b637c109ea58eae,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 7676312498028782827, guid: 96e88f2492c7dc242b637c109ea58eae,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7676312498028782827, guid: 96e88f2492c7dc242b637c109ea58eae,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7676312498028782827, guid: 96e88f2492c7dc242b637c109ea58eae,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5432569006647647436, guid: 96e88f2492c7dc242b637c109ea58eae,
+        type: 3}
+      propertyPath: Gas
+      value: 
+      objectReference: {fileID: 3976706930083918176, guid: 92bdb51ec9b4d324cb3ed8d94745b404,
+        type: 3}
+    - target: {fileID: 5432569006647647436, guid: 96e88f2492c7dc242b637c109ea58eae,
+        type: 3}
+      propertyPath: LandMine
+      value: 
+      objectReference: {fileID: 3976706930083918176, guid: 92bdb51ec9b4d324cb3ed8d94745b404,
+        type: 3}
+    - target: {fileID: 5432569006647647436, guid: 96e88f2492c7dc242b637c109ea58eae,
+        type: 3}
+      propertyPath: Fuel
+      value: 
+      objectReference: {fileID: 2794438641008183970, guid: 81669c1e9f6df984e8a74015fb7ced5a,
+        type: 3}
+    - target: {fileID: 5432569006647647436, guid: 96e88f2492c7dc242b637c109ea58eae,
+        type: 3}
+      propertyPath: Speed
+      value: 
+      objectReference: {fileID: 3935007284491019537, guid: b954e80ed34db1e40af23b7921b2ea9e,
+        type: 3}
+    - target: {fileID: 5432569006647647436, guid: 96e88f2492c7dc242b637c109ea58eae,
+        type: 3}
+      propertyPath: Repair
+      value: 
+      objectReference: {fileID: 188491061899512540, guid: 645ba6a3d35021847a5066f7f1168650,
+        type: 3}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 96e88f2492c7dc242b637c109ea58eae, type: 3}
 --- !u!1001 &364622152
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6373,7 +6481,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e4d0b18f0e5c77448beded63449e5f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Scoreboard_UI: {fileID: 0}
+  LevelDurationInMinutes: 1
   ActualLevel: 1
   Player1Points: 
   Player2Points: 
@@ -8196,9 +8304,10 @@ Camera:
   m_ClearFlags: 2
   m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
   m_projectionMatrixMode: 1
+  m_GateFitMode: 2
+  m_FOVAxisMode: 0
   m_SensorSize: {x: 36, y: 24}
   m_LensShift: {x: 0, y: 0}
-  m_GateFitMode: 2
   m_FocalLength: 50
   m_NormalizedViewPortRect:
     serializedVersion: 2
@@ -14808,7 +14917,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   trackLeft: {fileID: 2033031327}
   trackRight: {fileID: 625492012}
-  playerTag: 
+  playerTag: Player1
+  OtherPlayerTag: Player2
   jumpForce: 500
   Fuel: 100000
   horiz: 0
@@ -14818,6 +14928,15 @@ MonoBehaviour:
   temp: {x: 0, y: 0, z: 0}
   position: {x: 0, y: 0, z: 0}
   rotation: {x: 0, y: 0, z: 0, w: 0}
+  FuelTag: Fuel
+  LandMineTag: LandMine
+  SpeedTag: Speed
+  RepairTag: Life
+  LandMineDamage: 0
+  LandMineOpponentPoints: 0
+  Repair: 0
+  SpeedUP: 0
+  FuelUp: 0
 --- !u!50 &1154517246
 Rigidbody2D:
   serializedVersion: 4
@@ -21197,7 +21316,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   trackLeft: {fileID: 1468940682}
   trackRight: {fileID: 45423936}
-  playerTag: 
+  playerTag: Player2
+  OtherPlayerTag: Player1
   jumpForce: 500
   Fuel: 100000
   horiz: 0
@@ -21207,6 +21327,15 @@ MonoBehaviour:
   temp: {x: 0, y: 0, z: 0}
   position: {x: 0, y: 0, z: 0}
   rotation: {x: 0, y: 0, z: 0, w: 0}
+  FuelTag: Fuel
+  LandMineTag: LandMine
+  SpeedTag: Speed
+  RepairTag: Life
+  LandMineDamage: 0
+  LandMineOpponentPoints: 0
+  Repair: 0
+  SpeedUP: 0
+  FuelUp: 0
 --- !u!50 &1744418217
 Rigidbody2D:
   serializedVersion: 4

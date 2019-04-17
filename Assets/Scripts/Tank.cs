@@ -26,7 +26,7 @@ namespace Assets.Scripts.Objects
         private double Damage; // From 0 to 150
         private double TotalDamageAllowed;
         private float Speed;
-        private float InitialSpeed; 
+        private float InitialSpeed;
         private double FuelQty;// Amount of Initial Fuel
         private double FuelConsumption = 0.001; // Fuel Consumption Amount 
         public string Flag;
@@ -41,7 +41,7 @@ namespace Assets.Scripts.Objects
             //gCont = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameController>();
             InitialSpeed = 3.0f;
             Speed = InitialSpeed;
-            FuelQty = 100; 
+            FuelQty = 100;
             FuelConsumption = 0.01;
             Damage = 0;
             TotalDamageAllowed = 15;
@@ -68,13 +68,14 @@ namespace Assets.Scripts.Objects
         //}
         public void Move(string movement)
         {
-            ConsumeFuel();
+            setFuel();
         }
 
-        public void ConsumeFuel()
-        {
-            FuelQty -= FuelConsumption;
-        }
+        //public void ConsumeFuel(double fuelConsumption=0)
+        //{
+        //    if (fuelConsumption < 1) fuelConsumption = this.FuelConsumption;
+        //    FuelQty -= fuelConsumption;
+        //}
 
         public float GetSpeed()
         {
@@ -82,23 +83,26 @@ namespace Assets.Scripts.Objects
             else if (Damage / TotalDamageAllowed >= 0.6) Speed = InitialSpeed * 0.4f;
             else if (Damage / TotalDamageAllowed >= 0.4) Speed = InitialSpeed * 0.6f;
             else if (Damage / TotalDamageAllowed >= 0.2) Speed = InitialSpeed * 0.8f;
+            else Speed = InitialSpeed;
 
             if (FuelQty <= 0) Speed = InitialSpeed * 0.1f;
-            ConsumeFuel();
+            setFuel();
             return Speed;
         }
 
-        public void SetDamage()
+        public void SetDamage(int damage=1)
         {
-            Damage++;
+            Damage+=damage;
+            if (Damage < 0) Damage = 0;
         }
         public double GetDamageLevel()
         {
-            return Damage / TotalDamageAllowed ;
+            return Damage / TotalDamageAllowed;
         }
-        public void setFuel(double PowerUp =0)
+        public void setFuel(double PowerUp = 0)
         {
             FuelQty += (PowerUp - FuelConsumption);
+            if (FuelQty < 0) FuelQty = 0;
         }
         public double GetFuel()
         {
@@ -110,7 +114,7 @@ namespace Assets.Scripts.Objects
             return this.Flag;
         }
 
-        public void ScorePoints(int value=1)
+        public void ScorePoints(int value = 1)
         {
             Points += value;
             TotalPoints += value;
@@ -118,7 +122,7 @@ namespace Assets.Scripts.Objects
         public void ResetLevel()
         {
             Points = 0;
-  
+
         }
         public int getScoredPoints(int value = 1)
         {
@@ -128,6 +132,9 @@ namespace Assets.Scripts.Objects
         {
             return TotalPoints;
         }
+
+ 
+
     }
 }
 

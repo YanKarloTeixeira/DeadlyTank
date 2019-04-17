@@ -950,7 +950,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b73ea34c5086e6942810124a61f0ba66, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animator: {fileID: 110210548}
+  animator: {fileID: 0}
 --- !u!95 &110210548
 Animator:
   serializedVersion: 3
@@ -2510,36 +2510,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e022cefce7e76a6419f6febcf75fe077, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &325533319
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 325533320}
-  m_Layer: 0
-  m_Name: Land_Mine
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &325533320
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 325533319}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.27861446, y: -3.0215354, z: -4.683293}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 10
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &343287676
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2958,6 +2928,7 @@ GameObject:
   m_Component:
   - component: {fileID: 404548959}
   - component: {fileID: 404548960}
+  - component: {fileID: 404548961}
   m_Layer: 0
   m_Name: GameController
   m_TagString: GameController
@@ -2991,10 +2962,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e4d0b18f0e5c77448beded63449e5f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Scoreboard_UI: {fileID: 0}
+  LevelDurationInMinutes: 1
   ActualLevel: 1
-  Player1Points: 
-  Player2Points: 
+  Player1Points: 000000000000000000000000
+  Player2Points: 000000000000000000000000
   Player1FuelLevel: 0
   Player2FuelLevel: 0
   player1Damage: 0
@@ -3007,6 +2978,21 @@ MonoBehaviour:
   UI_Player2Points: {fileID: 2068040814}
   UI_Player2Fuel: {fileID: 317229589}
   UI_Player2Damage: {fileID: 444425422}
+--- !u!114 &404548961
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 404548958}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a1ffd1ee6b08ea2448d5f470854b63ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  LevelDurationInMinutes: 1
+  gameController: {fileID: 404548958}
+  endLevel: 0
 --- !u!1 &426718986
 GameObject:
   m_ObjectHideFlags: 0
@@ -3853,7 +3839,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b73ea34c5086e6942810124a61f0ba66, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animator: {fileID: 530074184}
+  animator: {fileID: 0}
 --- !u!95 &530074184
 Animator:
   serializedVersion: 3
@@ -7185,6 +7171,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1101176007}
   - component: {fileID: 1101176006}
+  - component: {fileID: 1101176008}
   m_Layer: 0
   m_Name: grass_background
   m_TagString: Untagged
@@ -7254,6 +7241,29 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!68 &1101176008
+EdgeCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1101176005}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_EdgeRadius: 0
+  m_Points:
+  - {x: 1.2487303, y: -1.1673106}
+  - {x: 1.2487303, y: -1.2644763}
+  - {x: 1.249931, y: -1.1459817}
+  - {x: 1.2511314, y: 1.2547218}
+  - {x: -1.2543637, y: 1.2626022}
+  - {x: -1.2561053, y: -1.2567219}
+  - {x: 1.2449673, y: -1.261689}
 --- !u!1001 &1102293759
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7410,7 +7420,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   trackLeft: {fileID: 2033031327}
   trackRight: {fileID: 625492012}
-  playerTag: 
+  playerTag: Player1
+  OtherPlayerTag: Player2
   jumpForce: 500
   Fuel: 100000
   horiz: 0
@@ -7420,6 +7431,15 @@ MonoBehaviour:
   temp: {x: 0, y: 0, z: 0}
   position: {x: 0, y: 0, z: 0}
   rotation: {x: 0, y: 0, z: 0, w: 0}
+  FuelTag: Fuel
+  LandMineTag: LandMine
+  SpeedTag: Speed
+  RepairTag: Life
+  LandMineDamage: 0
+  LandMineOpponentPoints: 0
+  Repair: 0
+  SpeedUP: 0
+  FuelUp: 0
 --- !u!50 &1154517246
 Rigidbody2D:
   serializedVersion: 4
@@ -8353,7 +8373,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b73ea34c5086e6942810124a61f0ba66, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animator: {fileID: 1251844578}
+  animator: {fileID: 0}
 --- !u!95 &1251844578
 Animator:
   serializedVersion: 3
@@ -11243,7 +11263,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   trackLeft: {fileID: 1468940682}
   trackRight: {fileID: 45423936}
-  playerTag: 
+  playerTag: Player2
+  OtherPlayerTag: Player1
   jumpForce: 500
   Fuel: 100000
   horiz: 0
@@ -11253,6 +11274,15 @@ MonoBehaviour:
   temp: {x: 0, y: 0, z: 0}
   position: {x: 0, y: 0, z: 0}
   rotation: {x: 0, y: 0, z: 0, w: 0}
+  FuelTag: Fuel
+  LandMineTag: LandMine
+  SpeedTag: Speed
+  RepairTag: Life
+  LandMineDamage: 0
+  LandMineOpponentPoints: 0
+  Repair: 0
+  SpeedUP: 0
+  FuelUp: 0
 --- !u!50 &1744418217
 Rigidbody2D:
   serializedVersion: 4
@@ -12435,7 +12465,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b73ea34c5086e6942810124a61f0ba66, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animator: {fileID: 1916411779}
+  animator: {fileID: 0}
 --- !u!95 &1916411779
 Animator:
   serializedVersion: 3
@@ -13934,6 +13964,30 @@ PrefabInstance:
       propertyPath: Gas
       value: 
       objectReference: {fileID: 3976706930083918176, guid: 92bdb51ec9b4d324cb3ed8d94745b404,
+        type: 3}
+    - target: {fileID: 5432569006647647436, guid: 96e88f2492c7dc242b637c109ea58eae,
+        type: 3}
+      propertyPath: LandMine
+      value: 
+      objectReference: {fileID: 3976706930083918176, guid: 92bdb51ec9b4d324cb3ed8d94745b404,
+        type: 3}
+    - target: {fileID: 5432569006647647436, guid: 96e88f2492c7dc242b637c109ea58eae,
+        type: 3}
+      propertyPath: Fuel
+      value: 
+      objectReference: {fileID: 2794438641008183970, guid: 81669c1e9f6df984e8a74015fb7ced5a,
+        type: 3}
+    - target: {fileID: 5432569006647647436, guid: 96e88f2492c7dc242b637c109ea58eae,
+        type: 3}
+      propertyPath: Speed
+      value: 
+      objectReference: {fileID: 3935007284491019537, guid: b954e80ed34db1e40af23b7921b2ea9e,
+        type: 3}
+    - target: {fileID: 5432569006647647436, guid: 96e88f2492c7dc242b637c109ea58eae,
+        type: 3}
+      propertyPath: Repair
+      value: 
+      objectReference: {fileID: 188491061899512540, guid: 645ba6a3d35021847a5066f7f1168650,
         type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 96e88f2492c7dc242b637c109ea58eae, type: 3}

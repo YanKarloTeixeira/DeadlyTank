@@ -5,57 +5,124 @@ using UnityEngine;
 
 public class PowerUp : MonoBehaviour
 {
-    public string trigger;
     private GameController gCont;
-    private Assets.Scripts.Objects.Tank Tank01, Tank02;
-    public GameObject Tank01_;
-    public int effect = 0;
-    public int type = 0;
+    public Assets.Scripts.Objects.Tank Tank01, Tank02;
+
+    //PowerUps Tags
+    public string FuelTag = "Fuel";
+    public string LandMineTag = "LandMine";
+    public string SpeedTag = "Speed";
+    public string RepairTag = "Repair";
+
+    //PowerUps Effescts Variables
+    private int LandMineDamage=3;
+    private int LandMineOpponentPoints=3;
+    private int Repair=10;
+    private float SpeedUP=0;
+    private double FuelUp=50;
+
+
 
     // Start is called before the first frame update
     void Start()
     {
-        Destroy(this.gameObject,Random.Range(10f,15f));
+        Destroy(this.gameObject, Random.Range(10f, 15f));
+        Tank01 = GameObject.FindGameObjectWithTag("Player1").GetComponent<Player1>().Tank;
+        Tank02 = GameObject.FindGameObjectWithTag("Player2").GetComponent<Player2>().Tank;
+
     }
 
     // Update is called once per frame
     void Update()
     {
 
-        
+
     }
     void OnTriggerEnter2D(Collider2D other)
     {
         // Check if 'other' is a tagged an item
-        Debug.Log("Other tag: " + other.tag);
-        Debug.Log("Bullet trigger: " + this.trigger);
-        if (other.tag == this.trigger) return;
-        switch (other.tag.ToUpper())
-        {
-            case "PLAYER1" :
+        if (this.tag == LandMineTag) LandMineCollision(other.tag);
+        else if (this.tag == SpeedTag) SpeedCollision(other.tag);
+        else if (this.tag == FuelTag) FuelCollision(other.tag);
+        else if (this.tag == RepairTag) RepairCollision(other.tag);
 
-                Tank02.ScorePoints();
-                Tank01.SetDamage();
-                gCont.setScoreboard(Tank02.Flag);
-                Destroy(this.gameObject);
-                break;
-            case "PLAYER2":
-                Tank01.ScorePoints();
-                Tank02.SetDamage();
-                gCont.setScoreboard(Tank01.Flag);
-                Destroy(this.gameObject);
-                break;
-        }
+
     }
 
-    void PowerUpEffect(Tank tankTrigger, Tank tankOpponent)
+    void LandMineCollision(string player)
     {
-        switch (type)
+        Debug.Log("Land Mine explodes !!!");
+        if (player == "Player1")
         {
-            case 1: // gas
-                tankTrigger.setFuel(tankTrigger.GetFuel()+effect);
-                break;
+            Tank02.ScorePoints(LandMineOpponentPoints);
+            Tank01.SetDamage(LandMineDamage);
+            Destroy(this.gameObject);
+            this.UpdateScoreboard(player);
+
+        }
+        else if (player == "Player2")
+        {
+            Tank01.ScorePoints(LandMineOpponentPoints);
+            Tank02.SetDamage(LandMineDamage);
+            Destroy(this.gameObject);
+            this.UpdateScoreboard(player);
+        }
+
+    }
+
+    void SpeedCollision(string player)
+    {
+        Debug.Log("FUEL AVAILABLE !!!");
+        if (player == "Player1")
+        {
+            Tank01.setFuel(FuelUp);
+            Destroy(this.gameObject);
+        }
+        else if (player == "Player2")
+        {
+            Tank02.setFuel(FuelUp);
+            Destroy(this.gameObject);
         }
     }
 
+    void RepairCollision(string player)
+    {
+        Debug.Log("MECHANICS WORKING !!!");
+        if (player == "Player1")
+        {
+            Tank01.SetDamage(Repair * (-1));
+            Destroy(this.gameObject);
+            this.UpdateScoreboard(player);
+        }
+        else if (player == "Player2")
+        {
+            Tank02.SetDamage(Repair * (-1));
+            Destroy(this.gameObject);
+            this.UpdateScoreboard(player);
+        }
+    }
+
+
+    void FuelCollision(string player)
+    {
+        Debug.Log("FUEL AVAILABLE !!!");
+        if (player == "Player1")
+        {
+            Tank01.setFuel(FuelUp);
+            Destroy(this.gameObject);
+            this.UpdateScoreboard(player);
+        }
+        else if (player == "Player2")
+        {
+            Tank02.setFuel(FuelUp);
+            Destroy(this.gameObject);
+            this.UpdateScoreboard(player);
+        }
+    }
+    void UpdateScoreboard(string player)
+    {
+        (GameObject.FindGameObjectWithTag("GameController")
+           .GetComponent<GameController>()).setScoreboard(player);
+
+    }
 }

@@ -11,17 +11,22 @@
                                                        
 */
 
+using Assets.Scripts;
 using System.Collections;
 using System.Collections.Generic;
+using System.Timers;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class GameController : MonoBehaviour
 {
-    public Scoreboard_UI Scoreboard_UI;
+    private LevelTimer levelTimer;
+    //public Scoreboard_UI Scoreboard_UI;
     private Assets.Scripts.Objects.Tank Tank01;
     private Assets.Scripts.Objects.Tank Tank02;
+    private System.Timers.Timer aTimer;
+    public int LevelDurationInMinutes =1;
 
     //private int itemCounter = 0;    // How many items I have picked up
     //private int totalItemCount = 0; // How many items are in my level
@@ -44,6 +49,7 @@ public class GameController : MonoBehaviour
     public UI_Player2Points UI_Player2Points;
     public UI_Player2Fuel UI_Player2Fuel;
     public UI_Player2Damage UI_Player2Damage;
+    
 
     //public Text ScoreboardPlayer1Fuel;
     //public Text ScoreboardPlayer1Damage;
@@ -54,6 +60,7 @@ public class GameController : MonoBehaviour
 
     // Start is called before the first frame update
 
+       
     void Start()
     {
         Player1Points = new int[3];
@@ -61,6 +68,12 @@ public class GameController : MonoBehaviour
         int dummy = PlayerPrefs.GetInt("ActualLevel");
         ActualLevel = PlayerPrefs.GetInt("ActualLevel");
 
+        levelTimer = new LevelTimer(LevelDurationInMinutes);
+
+        //aTimer = new System.Timers.Timer();
+        //aTimer.Interval = LevelDurationInMinutes * 6000;
+        //aTimer.Elapsed += new ElapsedEventHandler(OnTimedEvent);
+        //aTimer.Start();
         /******************************
          Initializing the Scoreboard
          ******************************/
@@ -77,6 +90,17 @@ public class GameController : MonoBehaviour
 
     void Update()
     {
+        if (levelTimer.endLevel)
+        {
+            this.LevelEnd();
+            levelTimer.reset();
+        }
+
+        
+        Debug.Log("Timmer : " + (levelTimer.GetElapsed()- (levelTimer.GetElapsed() % 60) )/ 60 +
+            ":" + levelTimer.GetElapsed() % 60 + " - EndLevel Status :" + levelTimer.endLevel+
+            " - Limit:"+levelTimer.Limit + " - Counter:"+levelTimer.secCounter);
+        Debug.Log("EndLevel Status :" + levelTimer.endLevel);
         if(Input.GetKeyDown(KeyCode.P))
         {
             //set audo snapshot to pause or unpause snapshot
@@ -131,7 +155,7 @@ public class GameController : MonoBehaviour
         Player2FuelLevel = player2.Tank.GetFuel();
         player1Damage = player1.Tank.GetDamageLevel();
         player2Damage = player2.Tank.GetDamageLevel();
-        if (Player1Points[ActualLevel-1] >= 15 || Player2Points[ActualLevel - 1] >= 15) LevelEnd();
+        //if (Player1Points[ActualLevel-1] >= 15 || Player2Points[ActualLevel - 1] >= 15) LevelEnd();
     }
 
     // Update the level
@@ -166,6 +190,12 @@ public class GameController : MonoBehaviour
         }
         return value;
     }
+
+    private void OnTimedEvent(object sender, ElapsedEventArgs e)
+    {
+        this.LevelEnd();
+    }
+
     public void LevelEnd()
     {
         ChangeLevel();

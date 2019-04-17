@@ -14,6 +14,10 @@ TagManager:
   - Player2
   - Barrier2
   - Barrier3
+  - LandMine
+  - Repair
+  - Fuel
+  - Speed
   layers:
   - Default
   - TransparentFX
