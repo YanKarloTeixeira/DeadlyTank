@@ -41,6 +41,7 @@ public class GameController : MonoBehaviour
 
     public Player1 player1;
     public Player2 player2;
+    public GameOverController gameOverController;
 
     public UI_Player1Points UI_Player1Points;
     public UI_Player1Fuel UI_Player1Fuel;
@@ -210,6 +211,7 @@ public class GameController : MonoBehaviour
                 SceneManager.LoadScene("Battle3");
                 break;
             default:
+               //gameOverController.pl=1;
                 SceneManager.LoadScene("GameOver");
                 break;
 
